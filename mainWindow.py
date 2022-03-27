@@ -1,6 +1,5 @@
-from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
-import sys
 import storedFunctions
 
 class MainWindow(QWidget):
@@ -12,6 +11,7 @@ class MainWindow(QWidget):
         vLay = QVBoxLayout()
 
         funcLabel = QLabel("Functions")
+        funcLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         vLay.addWidget(funcLabel)
 
         for name, val in storedFunctions.__dict__.items():
@@ -22,18 +22,8 @@ class MainWindow(QWidget):
         
         vLay.addStretch()
 
-        button1 = QPushButton("Make Breakfast")
-        button2 = QPushButton("Web Scrape Website")
-        button3 = QPushButton("Write Thank You Email")
-
-        button1.clicked.connect(self.breakfast_clicked)
-
         self.setLayout(vLay)
-
         self.setFixedSize(QSize(400, 300))
-
-    def breakfast_clicked(self):
-        print("Breakfast was made!")
 
 app = QApplication([])
 
