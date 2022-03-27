@@ -16,6 +16,9 @@ class MainWindow(QWidget):
 
         for name, val in storedFunctions.__dict__.items():
             if callable(val):
+                name = name.split("_")
+                name = [x.capitalize() for x in name]
+                name = ' '.join(name)
                 button = QPushButton(name)
                 vLay.addWidget(button)
                 button.clicked.connect(val)
